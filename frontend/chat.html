@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gumzo -  sign in</title>
+    <link rel="stylesheet" href="./resources/css/chat.css">
 </head>
 <body>
-    <script src="https://accounts.google.com/gsi/client" async></script>
-    <script>
-        function handleCredentialResponse(response){
-            alert(response);
-        }
-    </script>
+    <div id="header">
+        <div id="heading">
+            <h1>Gumzo</h1>
+        </div>
+
+        <div class="g_id_signin"
+            data-type="standard"
+            data-shape="rectangular"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="left">
+        </div>
+        
+    </div>
     <div id="g_id_onload"
         data-client_id="823075513109-4i8tg29uh6qm0t70uo74dbkbmc6oo17e.apps.googleusercontent.com"
         data-context="use"
@@ -22,15 +32,7 @@
         data-auto_select="true"
         data-itp_support="true">
     </div>
-
-    <div class="g_id_signin"
-        data-type="standard"
-        data-shape="rectangular"
-        data-theme="outline"
-        data-text="signin_with"
-        data-size="large"
-        data-logo_alignment="left">
-    </div>
-    
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script src="./resources/js/chat.js"></script>
 </body>
 </html>
