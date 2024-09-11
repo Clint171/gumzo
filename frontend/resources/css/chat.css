@@ -3,6 +3,23 @@ body{
     color: white;
 }
 
+#image{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+#image:hover{
+    cursor: pointer;
+}
+
+#image img{
+    width: 100%;
+    height: 100%;
+}
+
 #header{
     background-color: #3d3d3d;
     position: fixed;
@@ -48,4 +65,63 @@ body{
 #heading{
     width: 20%;
     text-align: center;
+}
+
+#input{
+    position: fixed;
+    bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#input input{
+    width: 30em;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+}
+
+#input button{
+    background-color: #3d3d3d;
+    color: white;
+    border: 2px solid white;
+    padding: 0.5em;
+    width: 10em;
+}
+
+#input button:hover{
+    cursor: pointer;
+}
+
+#chat{
+    display: flex;
+    flex-direction: column;
+}
+
+#receive{
+    background-color: #3d3d3d;
+    color: white;
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 2px solid white;
+    border-radius: 0.5em;
+    width: fit-content;
+    max-width: 70%;
+    text-align: left;
+}
+
+#send{
+    align-self: flex-end;
+    background-color: #3d3d3d;
+    color: white;
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 2px solid white;
+    border-radius: 0.5em;
+    width: fit-content;
+    max-width: 70%;
+    text-align: right;
 }
