@@ -1,3 +1,3 @@
 function handleCredentialResponse(response){
-    alert(response);
+    alert(JSON.stringify(response));
 }
