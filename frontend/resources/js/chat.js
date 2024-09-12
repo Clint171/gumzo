@@ -17,6 +17,9 @@ function handleCredentialResponse(response){
         document.querySelector("#head").innerText += ` - ${data.user.name}`;
         document.querySelector("#login").style.display = "none";
         document.querySelector("#logout").style.display = "block";
+
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("user", JSON.stringify(data.user));
     }).catch(error => {
         console.error(error);
     });
