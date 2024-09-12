@@ -40,6 +40,8 @@ function handleLogout(){
     localStorage.removeItem("user");
     document.querySelector("#login").style.display = "block";
     document.querySelector("#logout").style.display = "none";
+    document.querySelector("#profileImg").src = "https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg";
+    location.reload();
 }
 
 document.querySelector("#logout").addEventListener("click", () => {
