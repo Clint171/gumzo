@@ -3,6 +3,22 @@ body{
     color: white;
 }
 
+#logout{
+    background-color: #3d3d3d;
+    color: white;
+    font-size: large;
+    border: 2px solid white;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    width: 10em;
+}
+
+#logout:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
 #image{
     width: 3em;
     height: 3em;

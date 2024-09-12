@@ -30,6 +30,8 @@ function handleCredentialResponse(response){
 
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
+
+
     }).catch(error => {
         console.error(error);
     });
@@ -47,3 +49,22 @@ function handleLogout(){
 document.querySelector("#logout").addEventListener("click", () => {
     handleLogout();
 });
+
+function initiateSocket(){
+    const socket = io("http://localhost:3000");
+    socket.on("connect", () => {
+        console.log("Connected to the websocket server");
+    });
+
+    socket.on("AI-message", (data) => {
+        console.log(data);
+        const message = document.createElement("div");
+        message.innerHTML = `<strong>${data.user.name}</strong>: ${data.message}`;
+        document.querySelector("#chat").appendChild(message);
+    });
+
+    document.querySelector("#send").addEventListener("click", () => {
+        const message = document.querySelector("#message").value;
+        socket.emit("message", message);
+    });
+}
