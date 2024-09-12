@@ -1,3 +1,14 @@
+window.onload = function(){
+    if(localStorage.getItem("accessToken")){
+        // Remove the login button and show the logout button
+        document.querySelector("#login").style.display = "none";
+        document.querySelector(".g_id_onload").style.display = "none";
+        document.querySelector("#logout").style.display = "block";
+        const user = JSON.parse(localStorage.getItem("user"));
+        document.querySelector("#profileImg").src = user.picture;
+    }
+}
+
 function handleCredentialResponse(response){
     fetch("http://localhost:3000/login" , {
         method: 'POST',
@@ -23,3 +34,14 @@ function handleCredentialResponse(response){
         console.error(error);
     });
 }
+
+function handleLogout(){
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+    document.querySelector("#login").style.display = "block";
+    document.querySelector("#logout").style.display = "none";
+}
+
+document.querySelector("#logout").addEventListener("click", () => {
+    handleLogout();
+});
