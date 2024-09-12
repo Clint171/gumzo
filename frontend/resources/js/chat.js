@@ -14,7 +14,6 @@ function handleCredentialResponse(response){
     }).then(data => {
         console.log(data.user);
         document.querySelector("#profileImg").src = data.user.picture;
-        document.querySelector("#head").innerText += ` - ${data.user.name}`;
         document.querySelector("#login").style.display = "none";
         document.querySelector("#logout").style.display = "block";
 
