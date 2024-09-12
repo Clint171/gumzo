@@ -98,8 +98,32 @@ body{
     align-items: center;
 }
 
+#chat-header{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+}
+
+#chat-image{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    padding: 0.5em;
+    overflow: hidden;
+}
+
+#chat-image img{
+    width: 100%;
+    height: 100%;
+}
+
 #chat{
     width: 98%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
 }
 
 #heading{

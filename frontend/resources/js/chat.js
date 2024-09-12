@@ -2,8 +2,8 @@ window.onload = function(){
     if(localStorage.getItem("accessToken")){
         // Remove the login button and show the logout button
         document.querySelector("#login").style.display = "none";
-        document.querySelector(".g_id_onload").style.display = "none";
-        document.querySelector("#logout").style.display = "block";
+        document.querySelector("#g_id_onload").style.display = "none";
+        document.querySelector("#logout_div").style.display = "block";
         const user = JSON.parse(localStorage.getItem("user"));
         document.querySelector("#profileImg").src = user.picture;
     }
@@ -26,7 +26,7 @@ function handleCredentialResponse(response){
         console.log(data.user);
         document.querySelector("#profileImg").src = data.user.picture;
         document.querySelector("#login").style.display = "none";
-        document.querySelector("#logout").style.display = "block";
+        document.querySelector("#logout_div").style.display = "block";
 
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
