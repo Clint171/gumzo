@@ -12,7 +12,11 @@ function handleCredentialResponse(response){
             throw new Error("Invalid token");
         }
     }).then(data => {
-        console.log(data);
+        console.log(data.user);
+        document.querySelector("#profileImg").src = data.user.picture;
+        document.querySelector("#head").innerText += ` - ${data.user.name}`;
+        document.querySelector("#login").style.display = "none";
+        document.querySelector("#logout").style.display = "block";
     }).catch(error => {
         console.error(error);
     });
