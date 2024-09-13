@@ -93,6 +93,13 @@ document.querySelector("#send").addEventListener("click", () => {
 
 });
 
+socket.on("user-prompt", (message) => {
+    let sendDiv = document.createElement("div");
+    sendDiv.classList.add("sendDiv");
+    sendDiv.textContent = message;
+    document.querySelector("#chat").appendChild(sendDiv);
+});
+
 socket.on("AI-message-started", () => {
     console.log("AI message started");
     let receiveDiv = document.createElement("div");

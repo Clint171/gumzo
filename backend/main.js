@@ -139,6 +139,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on("AI-message", (message) => {
+        socket.emit("user-prompt" , message);
         const llamaAPI = new LlamaAI(apiToken);
         const apiRequest = {
             "model": "llama-70b-chat",
@@ -155,8 +156,9 @@ io.on('connection', (socket) => {
         }
 
         socket.AIMessages.push(userMessage);
-        apiRequest.messages += socket.AIMessages;
 
+        apiRequest.messages.push(userMessage);
+            console.log(apiRequest.messages[apiRequest.messages.length - 1]);
         async function handleStream() {
             const sequenceGenerator = await llamaAPI.runStream(apiRequest);
                 
