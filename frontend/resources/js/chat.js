@@ -35,7 +35,7 @@ function handleCredentialResponse(response){
         localStorage.setItem("user", JSON.stringify(data.user));
     });
 
-    socket.on("error", (error) => {
+    socket.on("login-error", (error) => {
         alert("Error logging in")
         console.error(error);
     });
@@ -109,4 +109,8 @@ socket.on("AI-message", (message) => {
 socket.on("AI-message-done", () => {
     console.log("AI message ended");
     document.querySelector("#current").id = "";
+});
+
+socket.on("Error", (error) => {
+    console.error(error);
 });

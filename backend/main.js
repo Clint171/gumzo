@@ -129,7 +129,7 @@ io.on('connection', (socket) => {
         let user = jwt.decode(token);
 
         if(!user){
-            socket.emit("error", "Invalid token");
+            socket.emit("login-error", "Invalid token");
             return;
         }
 
