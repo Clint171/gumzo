@@ -22,19 +22,35 @@ window.onload = function(){
 }
 
 function handleCredentialResponse(response){
-    fetch("http://localhost:3000/login" , {
-        method: 'POST',
-        body: JSON.stringify({token: response.credential}),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(response => {
-        if(response.status === 201){
-            return response.json();
-        } else {
-            throw new Error("Invalid token");
-        }
-    }).then(data => {
+    // fetch("http://localhost:3000/login" , {
+    //     method: 'POST',
+    //     body: JSON.stringify({token: response.credential}),
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // }).then(response => {
+    //     if(response.status === 201){
+    //         return response.json();
+    //     } else {
+    //         throw new Error("Invalid token");
+    //     }
+    // }).then(data => {
+    //     console.log(data.user);
+    //     document.querySelector("#profileImg").src = data.user.picture;
+    //     document.querySelector("#login").style.display = "none";
+    //     document.querySelector("#logout_div").style.display = "block";
+
+    //     localStorage.setItem("accessToken", data.accessToken);
+    //     localStorage.setItem("user", JSON.stringify(data.user));
+
+
+    // }).catch(error => {
+    //     console.error(error);
+    // });
+
+    socket.emit("login", response.credential);
+
+    socket.on("login", (data) => {
         console.log(data.user);
         document.querySelector("#profileImg").src = data.user.picture;
         document.querySelector("#login").style.display = "none";
@@ -42,9 +58,10 @@ function handleCredentialResponse(response){
 
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
+    });
 
-
-    }).catch(error => {
+    socket.on("error", (error) => {
+        alert("Error logging in")
         console.error(error);
     });
 }
@@ -61,21 +78,6 @@ function handleLogout(){
 document.querySelector("#logout").addEventListener("click", () => {
     handleLogout();
 });
-
-function initiateSocket(){
-
-    socket.on("AI-message", (data) => {
-        console.log(data);
-        const message = document.createElement("div");
-        message.innerHTML = `<strong>${data.user.name}</strong>: ${data.message}`;
-        document.querySelector("#chat").appendChild(message);
-    });
-
-    document.querySelector("#send").addEventListener("click", () => {
-        const message = document.querySelector("#message").value;
-        socket.emit("message", message);
-    });
-}
 
 const menuItems = document.querySelectorAll('.menu-item');
 
@@ -106,4 +108,30 @@ document.querySelector("#send").addEventListener("click", () => {
     const message = document.querySelector("#message").value;
     const chat = context.selectedChat;
 
+    // Check if it is AI context
+    if(context.selectedChat == "AI"){
+        socket.emit("AI-message", message);
+    }
+
+    // Clear the input field
+    document.querySelector("#message").value = "";
+
+});
+
+socket.on("AI-message-started", () => {
+    console.log("AI message started");
+    let receiveDiv = document.createElement("div");
+    receiveDiv.classList.add("receiveDiv");
+    receiveDiv.id = "current";
+    document.querySelector("#chat").appendChild(receiveDiv);
+});
+
+socket.on("AI-message", (message) => {
+    let currentDiv = document.querySelector("#current");
+    currentDiv.textContent += message;
+});
+
+socket.on("AI-message-done", () => {
+    console.log("AI message ended");
+    document.querySelector("#current").id = "";
 });
