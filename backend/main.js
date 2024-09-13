@@ -147,8 +147,8 @@ io.on('connection', (socket) => {
                 {"role" : "system", "content" : "You are a helpful assistant called Clint."}
             ],
             "stream" : true,
-            "temperature" : 1.0,
-            "max_length" : 1000
+            "temperature" : 0.8,
+            "max_length" : 5000
         }
         let userMessage = {
             role : "user",
