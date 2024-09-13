@@ -46,3 +46,11 @@ app.post('/login', (req, res) => {
 app.listen(3000, () => {
     console.log('Server running on port 3000');
 });
+
+// Socket
+
+const io = socket(app.listen(3000));
+
+io.on('connection', (socket) => {
+    console.log('User connected');
+});

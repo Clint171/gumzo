@@ -41,7 +41,13 @@
         <div id="menu">
             <div class="menu-item">
                 <img src="https://img.icons8.com/ios/452/chat.png" alt="Chat">
-                <span>AI chat</span>
+                <span id="userName">AI chat</span>
+                <span hidden id="userId">AI</span>
+            </div>
+            <div class="menu-item">
+                <img src="https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg" alt="Chat">
+                <span id="userName">Me</span>
+                <span hidden id="userId">AI</span>
             </div>
         </div>
     </div>
@@ -53,10 +59,10 @@
             </div>
         </div>
         <div id="chat">
-            <div class="receive">
-                <span>Hello, how can I help you today, Clint?</span>
+            <div class="receiveDiv">
+                <span>Hello, how can I help you today?</span>
             </div>
-            <div class="send">
+            <div class="sendDiv">
                 <span>Hi, I need help with my account</span>
             </div>
         </div>
@@ -66,6 +72,7 @@
         </div>
     </div>
     <script src="https://accounts.google.com/gsi/client" async></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
     <script src="./resources/js/chat.js"></script>
 </body>
 </html>
