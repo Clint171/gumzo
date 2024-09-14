@@ -147,7 +147,7 @@ io.on('connection', (socket) => {
                 {"role" : "system", "content" : "You are a helpful assistant called Clint."}
             ],
             "stream" : true,
-            "temperature" : 0.8,
+            "temperature" : 0.3,
             "max_length" : 5000
         }
         let userMessage = {
