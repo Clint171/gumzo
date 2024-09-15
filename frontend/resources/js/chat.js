@@ -99,9 +99,8 @@ document.querySelector("#message").addEventListener("keypress", (e) => {
 socket.on("user-prompt", (message) => {
     let sendDiv = document.createElement("div");
     sendDiv.classList.add("sendDiv");
-    sendDiv.textContent = message;
+    sendDiv.innerHTML = marked.parse(message);
     document.querySelector("#chat").insertBefore(sendDiv , document.querySelector("#anchor"));
-    document.scrollingElement.scroll(0, 1);
 });
 
 socket.on("AI-message-started", () => {
@@ -110,12 +109,11 @@ socket.on("AI-message-started", () => {
     receiveDiv.classList.add("receiveDiv");
     receiveDiv.id = "current";
     document.querySelector("#chat").insertBefore(receiveDiv , document.querySelector("#anchor"));
-    document.scrollingElement.scroll(0, 1);
 });
 
 socket.on("AI-message", (message) => {
     let currentDiv = document.querySelector("#current");
-    currentDiv.textContent += message;
+    currentDiv.innerHTML += marked.parse(message);
 });
 
 socket.on("AI-message-done", () => {
@@ -126,3 +124,5 @@ socket.on("AI-message-done", () => {
 socket.on("Error", (error) => {
     console.error(error);
 });
+
+document.scrollingElement.scroll(0, 1);
