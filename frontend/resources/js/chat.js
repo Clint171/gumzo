@@ -124,15 +124,3 @@ socket.on("AI-message-done", () => {
 socket.on("Error", (error) => {
     console.error(error);
 });
-
-//test
-
-// let text = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor inventore, et maxime officia deleniti sit laborum cupiditate quos voluptas dolores? Possimus reiciendis illum omnis, consequatur numquam excepturi nihil assumenda repellendus?";
-
-// for(let j = 0; j < 20 ; j++){
-//     for (let i = 0; i < text.length; i++) {
-//         setTimeout(() => {
-//             document.querySelector("#test").textContent += text[i];
-//         }, 1000);
-//     }
-// }
