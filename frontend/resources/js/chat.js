@@ -113,11 +113,12 @@ socket.on("AI-message-started", () => {
 
 socket.on("AI-message", (message) => {
     let currentDiv = document.querySelector("#current");
-    currentDiv.innerHTML += marked.parse(message);
+    currentDiv.textContent += message;
 });
 
 socket.on("AI-message-done", () => {
     console.log("AI message ended");
+    document.querySelector("#current").innerHTML = document.querySelector("#current").textContent;
     document.querySelector("#current").id = "";
 });
 

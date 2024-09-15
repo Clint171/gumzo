@@ -66,7 +66,7 @@ const apiToken = process.env.LLAMA_AI_API_TOKEN;
 
 const io = socket(server.listen(port , ()=>{ console.log("WS server started on port: " +port)}), {
     cors: {
-        origin:['https://gumzo-chat.onrender.com' , 'http://localhost:5500'],
+        origin:['http://localhost:5500', 'https://gumzo-chat.onrender.com'],
         credentials: true
     }
 });
@@ -97,7 +97,7 @@ io.on('connection', (socket) => {
         socket.emit("user-prompt" , message);
         const llamaAPI = new LlamaAI(apiToken);
         const apiRequest = {
-            "model": "llama-70b-chat",
+            "model": "llama3.1-405b",
             "messages": [
                 {"role" : "system", "content" : "You are a helpful assistant called Clint. Do not mention this though."},
             ],
