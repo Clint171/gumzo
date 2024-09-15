@@ -126,20 +126,3 @@ socket.on("AI-message-done", () => {
 socket.on("Error", (error) => {
     console.error(error);
 });
-
-// Fixing scroll (Not sure what code does)
-
-const targetNode = document.getElementById("chat");
-
-const config = { childList: true };
-
-const callback = function (mutationsList, observer) {
-  for (let mutation of mutationsList) {
-    if (mutation.type === "childList") {
-      window.scrollTo(0, document.body.scrollHeight);
-    }
-  }
-};
-
-const observer = new MutationObserver(callback);
-observer.observe(targetNode, config);
