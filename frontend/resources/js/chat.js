@@ -100,7 +100,7 @@ socket.on("user-prompt", (message) => {
     let sendDiv = document.createElement("div");
     sendDiv.classList.add("sendDiv");
     sendDiv.textContent = message;
-    document.querySelector("#chat").appendChild(sendDiv);
+    document.querySelector("#chat").insertBefore(sendDiv , document.querySelector("#anchor"));
 });
 
 socket.on("AI-message-started", () => {
@@ -108,7 +108,7 @@ socket.on("AI-message-started", () => {
     let receiveDiv = document.createElement("div");
     receiveDiv.classList.add("receiveDiv");
     receiveDiv.id = "current";
-    document.querySelector("#chat").appendChild(receiveDiv);
+    document.querySelector("#chat").insertBefore(receiveDiv , document.querySelector("#anchor"));
 });
 
 socket.on("AI-message", (message) => {
