@@ -97,13 +97,13 @@ io.on('connection', (socket) => {
         socket.emit("user-prompt" , message);
         const llamaAPI = new LlamaAI(apiToken);
         const apiRequest = {
-            "model": "llama3.1-405b",
+            "model": "llama-70b-chat",
             "messages": [
                 {"role" : "system", "content" : "You are a helpful assistant called Clint. Do not mention this though."},
             ],
             "stream" : true,
-            "temperature" : 0.3,
-            "max_length" : 5000
+            "temperature" : 0.1,
+            "max_token" : 5000
         }
         let userMessage = {
             role : "user",
