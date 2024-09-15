@@ -90,6 +90,12 @@ document.querySelector("#send").addEventListener("click", () => {
 
 });
 
+document.querySelector("#message").addEventListener("keypress", (e) => {
+    if(e.key === "Enter"){
+        document.querySelector("#send").click();
+    }
+});
+
 socket.on("user-prompt", (message) => {
     let sendDiv = document.createElement("div");
     sendDiv.classList.add("sendDiv");
