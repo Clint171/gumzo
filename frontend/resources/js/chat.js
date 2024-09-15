@@ -101,6 +101,7 @@ socket.on("user-prompt", (message) => {
     sendDiv.classList.add("sendDiv");
     sendDiv.textContent = message;
     document.querySelector("#chat").insertBefore(sendDiv , document.querySelector("#anchor"));
+    document.scrollingElement.scroll(0, 1);
 });
 
 socket.on("AI-message-started", () => {
@@ -109,6 +110,7 @@ socket.on("AI-message-started", () => {
     receiveDiv.classList.add("receiveDiv");
     receiveDiv.id = "current";
     document.querySelector("#chat").insertBefore(receiveDiv , document.querySelector("#anchor"));
+    document.scrollingElement.scroll(0, 1);
 });
 
 socket.on("AI-message", (message) => {
@@ -124,3 +126,20 @@ socket.on("AI-message-done", () => {
 socket.on("Error", (error) => {
     console.error(error);
 });
+
+// Fixing scroll (Not sure what code does)
+
+const targetNode = document.getElementById("chat");
+
+const config = { childList: true };
+
+const callback = function (mutationsList, observer) {
+  for (let mutation of mutationsList) {
+    if (mutation.type === "childList") {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  }
+};
+
+const observer = new MutationObserver(callback);
+observer.observe(targetNode, config);
